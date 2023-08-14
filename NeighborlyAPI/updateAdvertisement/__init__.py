@@ -12,7 +12,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             url = "mongoDBConnection"  
             client = pymongo.MongoClient(url)
             database = client['mongoDBdatabase']
-            collection = database['advertisements']
+            collection = database['advertisement']
             
             filter_query = {'_id': ObjectId(id)}
             update_query = {"$set": eval(request)}

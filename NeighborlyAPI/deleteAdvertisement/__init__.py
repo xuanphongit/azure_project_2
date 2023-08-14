@@ -13,7 +13,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             url = os.environ["mongoDBConnection"]  
             client = pymongo.MongoClient(url)
             database = client['mongoDBdatabase']
-            collection = database['advertisements']
+            collection = database['advertisement']
             
             query = {'_id': ObjectId(id)}
             result = collection.delete_one(query)

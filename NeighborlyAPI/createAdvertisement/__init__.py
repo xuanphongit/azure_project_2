@@ -11,7 +11,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             url = os.environ["mongoDBConnection"]
             client = pymongo.MongoClient(url)
             database = client['mongoDBdatabase']
-            collection = database['advertisements']
+            collection = database['advertisement']
 
             rec_id1 = collection.insert_one(eval(request))
 

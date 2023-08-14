@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-For the final project, we are going to build an app called "Neighborly". Neighborly is a Python Flask-powered web application that allows neighbors to post advertisements for services and products they can offer.
+For the final project, we are going to build an app called "Neighborly". Neighborly is a Python Flask-powered web application that allows neighbors to post advertisement for services and products they can offer.
 
-The Neighborly project is comprised of a front-end application that is built with the Python Flask micro framework. The application allows the user to view, create, edit, and delete the community advertisements.
+The Neighborly project is comprised of a front-end application that is built with the Python Flask micro framework. The application allows the user to view, create, edit, and delete the community advertisement.
 
 The application makes direct requests to the back-end API endpoints. These are endpoints that we will also build for the server-side of the application.
 
@@ -58,7 +58,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
 
 4. Set up a Cosmos DB Account. You will need to use the same resource group, region and storage account, but can name the Cosmos DB account as you prefer. **Note:** This step may take a little while to complete (15-20 minutes in some cases).
 
-5. Create a MongoDB Database in CosmosDB Azure and two collections, one for `advertisements` and one for `posts`.
+5. Create a MongoDB Database in CosmosDB Azure and two collections, one for `advertisement` and one for `post`.
 6. Print out your connection string or get it from the Azure Portal. Copy/paste the **primary connection** string.  You will use it later in your application.
 
     Example connection string output:
@@ -91,7 +91,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
         mongoimport --version
         ```
 
-    - Import the data from the `sample_data` directory for Ads and Posts to initially fill your app.
+    - Import the data from the `sample_data` directory for Ads and post to initially fill your app.
 
         Example successful import:
         ```
@@ -99,20 +99,20 @@ We need to set up the Azure resource group, region, storage account, and an app 
         2020-05-18T23:30:39.018-0400  connected to: mongodb://neighborlyapp.mongo.cosmos.azure.com:10255/
         2020-05-18T23:30:40.344-0400  5 document(s) imported successfully. 0 document(s) failed to import.
         ...
-        Importing posts data ------------------->
+        Importing post data ------------------->
         2020-05-18T23:30:40.933-0400  connected to: mongodb://neighborlyapp.mongo.cosmos.azure.com:10255/
         2020-05-18T23:30:42.260-0400  4 document(s) imported successfully. 0 document(s) failed to import.
         ```
 
 8. Hook up your connection string into the NeighborlyAPI server folder. You will need to replace the *url* variable with your own connection string you copy-and-pasted in the last step, along with some additional information.
     - Tip: Check out [this post](https://docs.microsoft.com/en-us/azure/cosmos-db/connect-mongodb-account) if you need help with what information is needed.
-    - Go to each of the `__init__.py` files in getPosts, getPost, getAdvertisements, getAdvertisement, deleteAdvertisement, updateAdvertisement, createAdvertisements and replace your connection string. You will also need to set the related `database` and `collection` appropriately.
+    - Go to each of the `__init__.py` files in getpost, getPost, getadvertisement, getAdvertisement, deleteAdvertisement, updateAdvertisement, createadvertisement and replace your connection string. You will also need to set the related `database` and `collection` appropriately.
 
     ```bash
-    # inside getAdvertisements/__init__.py
+    # inside getadvertisement/__init__.py
 
     def main(req: func.HttpRequest) -> func.HttpResponse:
-        logging.info('Python getAdvertisements trigger function processed a request.')
+        logging.info('Python getadvertisement trigger function processed a request.')
 
         try:
             # copy/paste your primary connection url here
@@ -154,11 +154,11 @@ We need to set up the Azure resource group, region, storage account, and an app 
         At this point, Azure functions are hosted in localhost:7071.  You can use the browser or Postman to see if the GET request works.  For example, go to the browser and type in: 
 
         ```bash
-        # example endpoint for all advertisements
-        http://localhost:7071/api/getadvertisements
+        # example endpoint for all advertisement
+        http://localhost:7071/api/getadvertisement
 
-        #example endpoint for all posts
-        http://localhost:7071/api/getposts
+        #example endpoint for all post
+        http://localhost:7071/api/getpost
         ```
 
     2. Now you can deploy functions to Azure by publishing your function app.
@@ -177,14 +177,14 @@ We need to set up the Azure resource group, region, storage account, and an app 
             getAdvertisement - [httpTrigger]
                 Invoke url: https://<APP_NAME>.azurewebsites.net/api/getadvertisement
 
-            getAdvertisements - [httpTrigger]
-                Invoke url: https://<APP_NAME>.azurewebsites.net/api/getadvertisements
+            getadvertisement - [httpTrigger]
+                Invoke url: https://<APP_NAME>.azurewebsites.net/api/getadvertisement
 
             getPost - [httpTrigger]
                 Invoke url: https://<APP_NAME>.azurewebsites.net/api/getpost
 
-            getPosts - [httpTrigger]
-                Invoke url: https://<APP_NAME>.azurewebsites.net/api/getposts
+            getpost - [httpTrigger]
+                Invoke url: https://<APP_NAME>.azurewebsites.net/api/getpost
 
             updateAdvertisement - [httpTrigger]
                 Invoke url: https://<APP_NAME>.azurewebsites.net/api/updateadvertisement
