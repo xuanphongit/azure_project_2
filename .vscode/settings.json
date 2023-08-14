@@ -4,5 +4,7 @@
     "azureFunctions.pythonVenv": ".venv",
     "azureFunctions.projectLanguage": "Python",
     "azureFunctions.projectRuntime": "~4",
-    "debug.internalConsoleOptions": "neverOpen"
+    "debug.internalConsoleOptions": "neverOpen",
+    "appService.defaultWebAppToDeploy": "/subscriptions/63e57a67-37de-4afd-82b5-03b188e46c5d/resourceGroups/project_2/providers/Microsoft.Web/sites/phongmxproject2client",
+    "appService.deploySubpath": "NeighborlyFrontEnd"
 }
